@@ -284,7 +284,7 @@ public class Login extends javax.swing.JFrame {
             ResultSet rs = conn.s.executeQuery(str);
             
             if(rs.next()){
-                new DashboardScreen();
+                new DashboardScreen().setVisible(true);
                 setVisible(false);
             } else{
                 JOptionPane.showMessageDialog(null, "Invalid Login!");

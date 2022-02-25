@@ -171,7 +171,7 @@ public class StartWindow extends javax.swing.JFrame {
             
         }
          startWindow.setVisible(false);
-         new Login();
+         new Login().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
