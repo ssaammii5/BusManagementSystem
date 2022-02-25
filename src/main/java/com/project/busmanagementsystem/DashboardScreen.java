@@ -518,6 +518,9 @@ public class DashboardScreen extends javax.swing.JFrame {
         sideLogoutLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoutImg.png"))); // NOI18N
         sideLogoutLbl.setText("Logout");
         sideLogoutLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sideLogoutLblMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 sideLogoutLblMouseEntered(evt);
             }
@@ -568,9 +571,9 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addComponent(sidePaymentPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sideInvoicePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addComponent(sideLogoutPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         topBar.setBackground(new java.awt.Color(99, 225, 163));
@@ -3424,6 +3427,12 @@ public class DashboardScreen extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void sideLogoutLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sideLogoutLblMouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_sideLogoutLblMouseClicked
 
     /**
      * @param args the command line arguments

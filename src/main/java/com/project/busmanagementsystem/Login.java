@@ -5,6 +5,8 @@
  */
 package com.project.busmanagementsystem;
 
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -74,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         txtUsername.setBackground(new java.awt.Color(39, 222, 192));
         txtUsername.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(255, 255, 255));
-        txtUsername.setText("Username");
+        txtUsername.setText("User");
         txtUsername.setBorder(null);
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +91,11 @@ public class Login extends javax.swing.JFrame {
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
 
@@ -284,8 +291,9 @@ public class Login extends javax.swing.JFrame {
             ResultSet rs = conn.s.executeQuery(str);
             
             if(rs.next()){
-                new DashboardScreen().setVisible(true);
                 setVisible(false);
+                new DashboardScreen().setVisible(true);
+                
             } else{
                 JOptionPane.showMessageDialog(null, "Invalid Login!");
             }
@@ -320,6 +328,36 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "<html><div><h4>Forgot password!</h4></div><div>To recover your account, request a review to the system administrator.</div><br><b>Contact: </b><a href='admin@busmanage.com'>admin@busmanage.com</a></html>");
     }//GEN-LAST:event_txtForgotPassMouseClicked
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String fieldUser = txtUsername.getText();
+        String fieldPass = String.valueOf(txtPassword.getPassword());
+        
+        if(fieldUser.isEmpty()||fieldPass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Fields can't be empty!","Error",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        try {
+            ServerConnect conn = new ServerConnect();
+            String str = "SELECT * FROM admin WHERE username='"+fieldUser+"' AND password = '"+fieldPass+"'";
+            ResultSet rs = conn.s.executeQuery(str);
+            
+            if(rs.next()){
+                setVisible(false);
+                new DashboardScreen().setVisible(true);
+                
+            } else{
+                JOptionPane.showMessageDialog(null, "Invalid Login!");
+            }
+            
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e);
+        }
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
