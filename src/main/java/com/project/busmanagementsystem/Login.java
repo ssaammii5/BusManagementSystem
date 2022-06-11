@@ -287,7 +287,7 @@ public class Login extends javax.swing.JFrame {
         
         try {
             ServerConnect conn = new ServerConnect();
-            String str = "SELECT * FROM admin WHERE username='"+fieldUser+"' AND password = '"+fieldPass+"'";
+            String str = "SELECT * FROM user WHERE username='"+fieldUser+"' AND password = '"+fieldPass+"'";
             ResultSet rs = conn.s.executeQuery(str);
             
             if(rs.next()){
@@ -342,7 +342,7 @@ public class Login extends javax.swing.JFrame {
         
         try {
             ServerConnect conn = new ServerConnect();
-            String str = "SELECT * FROM admin WHERE username='"+fieldUser+"' AND password = '"+fieldPass+"'";
+            String str = "SELECT * FROM user WHERE username='"+fieldUser+"' AND password = '"+fieldPass+"'";
             ResultSet rs = conn.s.executeQuery(str);
             
             if(rs.next()){

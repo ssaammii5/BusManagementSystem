@@ -21,7 +21,7 @@ public class ServerConnect {
     
     public ServerConnect(){
         try {
-            Class .forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost/busmanagement_db","root","");
             s = c.createStatement();
         } catch (Exception e) {
