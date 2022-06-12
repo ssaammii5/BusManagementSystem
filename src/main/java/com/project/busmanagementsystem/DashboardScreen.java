@@ -8,6 +8,8 @@ package com.project.busmanagementsystem;
 import java.awt.Color;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -22,8 +24,8 @@ public class DashboardScreen extends javax.swing.JFrame {
      */
     public DashboardScreen() {
         super("Bus Management System");
-
         initComponents();
+        
     }
 
     /**
@@ -31,8 +33,23 @@ public class DashboardScreen extends javax.swing.JFrame {
      * Management System | | Unique Developer|
      *
      */
-    public void setRecordsToTable() {
-
+    private void driver_tbl_reset(){
+        model = (DefaultTableModel) tbl_driver.getModel();
+        model.setRowCount(0);
+    }
+    
+    private void driverTableColumnHide(){
+        
+        TableColumnManager tcm = new TableColumnManager(tbl_driver);
+        tcm.hideColumn(2);
+        tcm.hideColumn(3);
+        tcm.hideColumn(4);
+        tcm.hideColumn(5);
+        tcm.hideColumn(6);
+        tcm.hideColumn(7);
+        tcm.hideColumn(8);
+        tcm.hideColumn(9);
+        tcm.hideColumn(10);  
     }
 
     /**
@@ -282,22 +299,22 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
+        txt_u_driverId = new javax.swing.JTextField();
+        txt_u_driverName = new javax.swing.JTextField();
+        txt_u_address = new javax.swing.JTextField();
+        txt_u_contact = new javax.swing.JTextField();
         jLabel61 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        txt_u_medicalIssue = new javax.swing.JCheckBox();
         jLabel62 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
+        txt_u_dob = new javax.swing.JTextField();
+        txt_u_doj = new javax.swing.JTextField();
+        txt_u_license = new javax.swing.JTextField();
+        txt_u_licenseIssue = new javax.swing.JTextField();
+        txt_u_licenseExp = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_driver = new javax.swing.JTable();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        txt_u_assignBus = new javax.swing.JComboBox<>();
         jButton15 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
@@ -2820,21 +2837,21 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel60.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel60.setText("License Issue Date (DD-MM-YYYY)");
 
-        jTextField30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_driverId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_driverName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_address.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_contact.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel61.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel61.setText("Driver Name");
 
-        jCheckBox4.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox4.setText("Any Medical Issues?");
-        jCheckBox4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jCheckBox4.setBorderPainted(true);
+        txt_u_medicalIssue.setBackground(new java.awt.Color(255, 255, 255));
+        txt_u_medicalIssue.setText("Any Medical Issues?");
+        txt_u_medicalIssue.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_medicalIssue.setBorderPainted(true);
 
         jLabel62.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel62.setText("Assign Number of Bus");
@@ -2849,29 +2866,29 @@ public class DashboardScreen extends javax.swing.JFrame {
             }
         });
 
-        jTextField23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_dob.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_doj.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_license.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_licenseIssue.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_u_licenseExp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tbl_driver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Driver ID", "Driver Name"
+                "Driver ID", "Driver Name", "null", "null", "null", "null", "null", "null", "null", "null", "null"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2882,13 +2899,27 @@ public class DashboardScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_driver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_driverMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tbl_driver);
         if (tbl_driver.getColumnModel().getColumnCount() > 0) {
             tbl_driver.getColumnModel().getColumn(0).setResizable(false);
             tbl_driver.getColumnModel().getColumn(1).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(2).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(3).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(4).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(5).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(6).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(7).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(8).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(9).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(10).setResizable(false);
         }
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        txt_u_assignBus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jButton15.setBackground(new java.awt.Color(36, 202, 120));
         jButton15.setText("Search");
@@ -2949,18 +2980,18 @@ public class DashboardScreen extends javax.swing.JFrame {
                                             .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(28, 28, 28)
                                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                            .addComponent(jTextField27)
-                                            .addComponent(jTextField26)
-                                            .addComponent(jTextField25)
-                                            .addComponent(jTextField24)
-                                            .addComponent(jTextField23)
-                                            .addComponent(jTextField36)
-                                            .addComponent(jTextField34)
-                                            .addComponent(jTextField32)
-                                            .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txt_u_medicalIssue, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                            .addComponent(txt_u_licenseExp)
+                                            .addComponent(txt_u_licenseIssue)
+                                            .addComponent(txt_u_license)
+                                            .addComponent(txt_u_doj)
+                                            .addComponent(txt_u_dob)
+                                            .addComponent(txt_u_contact)
+                                            .addComponent(txt_u_address)
+                                            .addComponent(txt_u_driverName)
+                                            .addComponent(txt_u_assignBus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
-                                                .addComponent(jTextField30)
+                                                .addComponent(txt_u_driverId)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton15)))))
                                 .addGap(42, 42, 42)
@@ -2979,48 +3010,48 @@ public class DashboardScreen extends javax.swing.JFrame {
                             .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_u_driverId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(updateDriverPaneLayout.createSequentialGroup()
-                                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_u_driverName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
                                 .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_address, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_doj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_license, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_licenseIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_u_licenseExp, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jComboBox8))
+                            .addComponent(txt_u_assignBus))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_u_medicalIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton16)
@@ -3291,6 +3322,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         driverDetailsCard.add(updateDriverPane);
         driverDetailsCard.repaint();
         driverDetailsCard.revalidate();
+        driverTableColumnHide();
     }//GEN-LAST:event_topUpdateDriverBtnLblMouseClicked
 
     private void topAddBusBtnLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topAddBusBtnLblMouseClicked
@@ -3485,11 +3517,21 @@ public class DashboardScreen extends javax.swing.JFrame {
             ServerConnect con = new ServerConnect();
             ResultSet rs = con.s.executeQuery("select * from driver");
             
+            driver_tbl_reset();
             while (rs.next()) {
                 String driver_id = String.valueOf(rs.getString("driver_id"));
                 String driver_name = String.valueOf(rs.getString("driver_name"));
+                String address = String.valueOf(rs.getString("address"));
+                String contact_num = String.valueOf(rs.getString("contact_num"));
+                String dob = String.valueOf(rs.getString("dob"));
+                String date_of_joining = String.valueOf(rs.getString("date_of_joining"));
+                String license_num = String.valueOf(rs.getString("license_num"));
+                String license_issue = String.valueOf(rs.getString("license_issue"));
+                String license_exp = String.valueOf(rs.getString("license_exp"));
+                String assign_bus = String.valueOf(rs.getString("assign_bus"));
+                String medical_issue = String.valueOf(rs.getString("medical_issue"));
 
-                Object[] obj = {driver_id, driver_name};
+                Object[] obj = {driver_id, driver_name,address,contact_num,dob,date_of_joining,license_num,license_issue,license_exp,assign_bus,medical_issue};
                 model = (DefaultTableModel) tbl_driver.getModel();
                 model.addRow(obj);
                 
@@ -3498,6 +3540,25 @@ public class DashboardScreen extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton16MouseClicked
+
+    private void tbl_driverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_driverMouseClicked
+        // TODO add your handling code here:
+        int rowNo = tbl_driver.getSelectedRow();
+        TableModel model = tbl_driver.getModel();
+        
+        txt_u_driverId.setText(model.getValueAt(rowNo, 0).toString());
+        txt_u_driverName.setText(model.getValueAt(rowNo, 1).toString());
+        
+        txt_u_address.setText(tbl_driver.getModel().getValueAt(rowNo, 2).toString());
+        txt_u_contact.setText(tbl_driver.getModel().getValueAt(rowNo, 3).toString());
+        txt_u_dob.setText(tbl_driver.getModel().getValueAt(rowNo, 4).toString());
+        txt_u_doj.setText(tbl_driver.getModel().getValueAt(rowNo, 5).toString());
+        txt_u_license.setText(tbl_driver.getModel().getValueAt(rowNo, 6).toString());
+        txt_u_licenseIssue.setText(tbl_driver.getModel().getValueAt(rowNo, 7).toString());
+        txt_u_licenseExp.setText(tbl_driver.getModel().getValueAt(rowNo, 8).toString());
+        
+        
+    }//GEN-LAST:event_tbl_driverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3579,7 +3640,6 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
@@ -3593,7 +3653,6 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3720,19 +3779,10 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
     private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField40;
@@ -3789,6 +3839,17 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JTextField txtDriverLicenseIssue;
     private javax.swing.JTextField txtDriverLicenseNum;
     private javax.swing.JTextField txtDriverName;
+    private javax.swing.JTextField txt_u_address;
+    private javax.swing.JComboBox<String> txt_u_assignBus;
+    private javax.swing.JTextField txt_u_contact;
+    private javax.swing.JTextField txt_u_dob;
+    private javax.swing.JTextField txt_u_doj;
+    private javax.swing.JTextField txt_u_driverId;
+    private javax.swing.JTextField txt_u_driverName;
+    private javax.swing.JTextField txt_u_license;
+    private javax.swing.JTextField txt_u_licenseExp;
+    private javax.swing.JTextField txt_u_licenseIssue;
+    private javax.swing.JCheckBox txt_u_medicalIssue;
     private javax.swing.JPanel updateBusDetails;
     private javax.swing.JPanel updateDriverPane;
     private javax.swing.JPanel wholePanel;

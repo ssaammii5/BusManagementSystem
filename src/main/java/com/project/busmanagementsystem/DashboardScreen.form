@@ -4466,18 +4466,18 @@
                                                           </Group>
                                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="jCheckBox4" pref="180" max="32767" attributes="0"/>
-                                                              <Component id="jTextField27" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField26" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField25" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField24" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField23" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField36" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField34" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jTextField32" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jComboBox8" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_medicalIssue" pref="180" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_licenseExp" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_licenseIssue" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_license" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_doj" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_dob" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_contact" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_address" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_driverName" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txt_u_assignBus" alignment="0" max="32767" attributes="0"/>
                                                               <Group type="102" alignment="1" attributes="0">
-                                                                  <Component id="jTextField30" max="32767" attributes="0"/>
+                                                                  <Component id="txt_u_driverId" max="32767" attributes="0"/>
                                                                   <EmptySpace max="-2" attributes="0"/>
                                                                   <Component id="jButton15" min="-2" max="-2" attributes="0"/>
                                                               </Group>
@@ -4506,13 +4506,13 @@
                                               <Component id="jButton15" alignment="0" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jLabel55" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                  <Component id="jTextField30" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Component id="txt_u_driverId" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="jTextField32" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Component id="txt_u_driverName" min="-2" pref="25" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
@@ -4522,45 +4522,45 @@
                                           </Group>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel53" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField34" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_address" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel54" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField36" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_contact" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel58" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField23" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_dob" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel56" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField24" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_doj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel57" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField25" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_license" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel60" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField26" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_licenseIssue" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel59" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jTextField27" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="txt_u_licenseExp" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel62" pref="25" max="32767" attributes="0"/>
-                                              <Component id="jComboBox8" max="32767" attributes="0"/>
+                                              <Component id="txt_u_assignBus" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox4" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="txt_u_medicalIssue" min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -4649,7 +4649,7 @@
                             <Property name="text" type="java.lang.String" value="License Issue Date (DD-MM-YYYY)"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField30">
+                        <Component class="javax.swing.JTextField" name="txt_u_driverId">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4658,7 +4658,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField32">
+                        <Component class="javax.swing.JTextField" name="txt_u_driverName">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4667,7 +4667,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField34">
+                        <Component class="javax.swing.JTextField" name="txt_u_address">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4676,7 +4676,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField36">
+                        <Component class="javax.swing.JTextField" name="txt_u_contact">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4693,7 +4693,7 @@
                             <Property name="text" type="java.lang.String" value="Driver Name"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                        <Component class="javax.swing.JCheckBox" name="txt_u_medicalIssue">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4732,7 +4732,7 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField23">
+                        <Component class="javax.swing.JTextField" name="txt_u_dob">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4741,7 +4741,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField24">
+                        <Component class="javax.swing.JTextField" name="txt_u_doj">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4750,7 +4750,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField25">
+                        <Component class="javax.swing.JTextField" name="txt_u_license">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4759,7 +4759,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField26">
+                        <Component class="javax.swing.JTextField" name="txt_u_licenseIssue">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4768,7 +4768,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField27">
+                        <Component class="javax.swing.JTextField" name="txt_u_licenseExp">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -4787,13 +4787,67 @@
                             <Component class="javax.swing.JTable" name="tbl_driver">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="2" rowCount="0">
-                                    <Column editable="true" title="Driver ID" type="java.lang.String"/>
+                                  <Table columnCount="11" rowCount="0">
+                                    <Column editable="false" title="Driver ID" type="java.lang.String"/>
                                     <Column editable="false" title="Driver Name" type="java.lang.String"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
+                                    <Column editable="false" title="null" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="0">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                       <Title/>
                                       <Editor/>
@@ -4810,10 +4864,13 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_driverMouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JComboBox" name="jComboBox8">
+                        <Component class="javax.swing.JComboBox" name="txt_u_assignBus">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="5">
