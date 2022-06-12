@@ -6,6 +6,8 @@
 package com.project.busmanagementsystem;
 
 import java.awt.Color;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +15,24 @@ import java.awt.Color;
  */
 public class DashboardScreen extends javax.swing.JFrame {
 
+    DefaultTableModel model;
+
     /**
      * Creates new form DashboardScreen
      */
     public DashboardScreen() {
         super("Bus Management System");
-        
+
         initComponents();
+    }
+
+    /**
+     * User Comment Title How to search in jtable without button| Part-21 Fees
+     * Management System | | Unique Developer|
+     *
+     */
+    public void setRecordsToTable() {
+
     }
 
     /**
@@ -146,6 +159,41 @@ public class DashboardScreen extends javax.swing.JFrame {
         jTextField46 = new javax.swing.JTextField();
         jComboBox18 = new javax.swing.JComboBox<>();
         jTextField47 = new javax.swing.JTextField();
+        payment = new javax.swing.JPanel();
+        btnUpdateDriver3 = new javax.swing.JPanel();
+        topPayDriverPnl = new javax.swing.JPanel();
+        topPayDriverLbl = new javax.swing.JLabel();
+        topPayBusPnl = new javax.swing.JPanel();
+        topPayBusLbl = new javax.swing.JLabel();
+        paymentCard = new javax.swing.JPanel();
+        payBus = new javax.swing.JPanel();
+        jLabel77 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jTextField29 = new javax.swing.JTextField();
+        jComboBox16 = new javax.swing.JComboBox<>();
+        jTextField31 = new javax.swing.JTextField();
+        jTextField33 = new javax.swing.JTextField();
+        payDriver = new javax.swing.JPanel();
+        jLabel67 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jTextField12 = new javax.swing.JTextField();
+        jComboBox15 = new javax.swing.JComboBox<>();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
         addBus = new javax.swing.JPanel();
         btnUpdateDriver1 = new javax.swing.JPanel();
         topAddBusBtnPnl = new javax.swing.JPanel();
@@ -195,41 +243,6 @@ public class DashboardScreen extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jComboBox10 = new javax.swing.JComboBox<>();
-        payment = new javax.swing.JPanel();
-        btnUpdateDriver3 = new javax.swing.JPanel();
-        topPayDriverPnl = new javax.swing.JPanel();
-        topPayDriverLbl = new javax.swing.JLabel();
-        topPayBusPnl = new javax.swing.JPanel();
-        topPayBusLbl = new javax.swing.JLabel();
-        paymentCard = new javax.swing.JPanel();
-        payBus = new javax.swing.JPanel();
-        jLabel77 = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jTable8 = new javax.swing.JTable();
-        jPanel20 = new javax.swing.JPanel();
-        jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jLabel80 = new javax.swing.JLabel();
-        jLabel81 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
-        jTextField29 = new javax.swing.JTextField();
-        jComboBox16 = new javax.swing.JComboBox<>();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        payDriver = new javax.swing.JPanel();
-        jLabel67 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jTextField12 = new javax.swing.JTextField();
-        jComboBox15 = new javax.swing.JComboBox<>();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
         driverDetails = new javax.swing.JPanel();
         btnUpdateDriver = new javax.swing.JPanel();
         topAddDriverBtnPnl = new javax.swing.JPanel();
@@ -283,10 +296,11 @@ public class DashboardScreen extends javax.swing.JFrame {
         jTextField26 = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tbl_driver = new javax.swing.JTable();
         jComboBox8 = new javax.swing.JComboBox<>();
         jButton15 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -647,11 +661,11 @@ public class DashboardScreen extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel90)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jPanel26.setBackground(new java.awt.Color(239, 239, 239));
@@ -704,7 +718,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel91)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         jPanel28.setBackground(new java.awt.Color(239, 239, 239));
@@ -942,7 +956,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         addBusSchPnl.setLayout(addBusSchPnlLayout);
         addBusSchPnlLayout.setHorizontalGroup(
             addBusSchPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addBusSchLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(addBusSchLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         addBusSchPnlLayout.setVerticalGroup(
             addBusSchPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -974,7 +988,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         addBusRoutePnl.setLayout(addBusRoutePnlLayout);
         addBusRoutePnlLayout.setHorizontalGroup(
             addBusRoutePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addBusRouteLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(addBusRouteLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         addBusRoutePnlLayout.setVerticalGroup(
             addBusRoutePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1091,7 +1105,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addSchedulePaneLayout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(addSchedulePaneLayout.createSequentialGroup()
                                 .addGroup(addSchedulePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1218,31 +1232,28 @@ public class DashboardScreen extends javax.swing.JFrame {
         addRoutePaneLayout.setHorizontalGroup(
             addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRoutePaneLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addRoutePaneLayout.createSequentialGroup()
-                        .addContainerGap(131, Short.MAX_VALUE)
+                    .addGroup(addRoutePaneLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addRoutePaneLayout.createSequentialGroup()
+                        .addGroup(addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(129, 129, 129)
                         .addGroup(addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRoutePaneLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRoutePaneLayout.createSequentialGroup()
-                                .addGroup(addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(129, 129, 129)
-                                .addGroup(addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(addRoutePaneLayout.createSequentialGroup()
-                                        .addComponent(jButton6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField21)
-                                    .addComponent(jTextField11)))))
+                            .addGroup(addRoutePaneLayout.createSequentialGroup()
+                                .addComponent(jButton6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField21)
+                            .addComponent(jTextField11)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addRoutePaneLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel41)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addRoutePaneLayout.setVerticalGroup(
             addRoutePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1265,7 +1276,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         busScheduleCard.add(addRoutePane, "card2");
@@ -1315,7 +1326,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         topGenerateDriverInvcePnl.setLayout(topGenerateDriverInvcePnlLayout);
         topGenerateDriverInvcePnlLayout.setHorizontalGroup(
             topGenerateDriverInvcePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topGenerateDriverInvceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(topGenerateDriverInvceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         topGenerateDriverInvcePnlLayout.setVerticalGroup(
             topGenerateDriverInvcePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1347,7 +1358,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         topGenerateBusInvcePnl.setLayout(topGenerateBusInvcePnlLayout);
         topGenerateBusInvcePnlLayout.setHorizontalGroup(
             topGenerateBusInvcePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topGenerateBusInvceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(topGenerateBusInvceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         topGenerateBusInvcePnlLayout.setVerticalGroup(
             topGenerateBusInvcePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1536,19 +1547,19 @@ public class DashboardScreen extends javax.swing.JFrame {
                     .addGroup(driverInvoiceLayout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addGroup(driverInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, driverInvoiceLayout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, driverInvoiceLayout.createSequentialGroup()
                                 .addGroup(driverInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel84, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                    .addComponent(jLabel84, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel85, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel83, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(103, 103, 103)
                                 .addGroup(driverInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField35, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox17, javax.swing.GroupLayout.Alignment.LEADING, 0, 257, Short.MAX_VALUE)
+                                    .addComponent(jComboBox17, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
                                     .addComponent(jTextField37, javax.swing.GroupLayout.Alignment.LEADING))))))
                 .addGap(135, 135, 135))
         );
@@ -1575,7 +1586,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         invoiceCard.add(driverInvoice, "card2");
@@ -1650,32 +1661,29 @@ public class DashboardScreen extends javax.swing.JFrame {
         busInvoiceLayout.setHorizontalGroup(
             busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, busInvoiceLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(busInvoiceLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(busInvoiceLayout.createSequentialGroup()
+                        .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel74, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel75, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(103, 103, 103)
+                        .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField46, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox18, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
+                            .addComponent(jTextField47, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, busInvoiceLayout.createSequentialGroup()
-                        .addContainerGap(118, Short.MAX_VALUE)
-                        .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, busInvoiceLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, busInvoiceLayout.createSequentialGroup()
-                                .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel74, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel75, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(103, 103, 103)
-                                .addGroup(busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField46, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox18, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField47, javax.swing.GroupLayout.Alignment.LEADING)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, busInvoiceLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel72)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(busInvoiceLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         busInvoiceLayout.setVerticalGroup(
             busInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1699,7 +1707,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1721,6 +1729,365 @@ public class DashboardScreen extends javax.swing.JFrame {
         );
 
         middlePanel.add(invoice, "card2");
+
+        payment.setBackground(new java.awt.Color(248, 248, 248));
+
+        btnUpdateDriver3.setBackground(new java.awt.Color(248, 248, 248));
+        btnUpdateDriver3.setLayout(new java.awt.GridLayout(1, 0));
+
+        topPayDriverPnl.setBackground(new java.awt.Color(60, 188, 225));
+
+        topPayDriverLbl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        topPayDriverLbl.setForeground(new java.awt.Color(255, 255, 255));
+        topPayDriverLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topPayDriverLbl.setText("Pay Driver");
+        topPayDriverLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        topPayDriverLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                topPayDriverLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                topPayDriverLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                topPayDriverLblMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout topPayDriverPnlLayout = new javax.swing.GroupLayout(topPayDriverPnl);
+        topPayDriverPnl.setLayout(topPayDriverPnlLayout);
+        topPayDriverPnlLayout.setHorizontalGroup(
+            topPayDriverPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(topPayDriverLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        topPayDriverPnlLayout.setVerticalGroup(
+            topPayDriverPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(topPayDriverLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
+        btnUpdateDriver3.add(topPayDriverPnl);
+
+        topPayBusPnl.setBackground(new java.awt.Color(250, 199, 90));
+
+        topPayBusLbl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        topPayBusLbl.setForeground(new java.awt.Color(255, 255, 255));
+        topPayBusLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topPayBusLbl.setText("Pay Bus");
+        topPayBusLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        topPayBusLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                topPayBusLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                topPayBusLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                topPayBusLblMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout topPayBusPnlLayout = new javax.swing.GroupLayout(topPayBusPnl);
+        topPayBusPnl.setLayout(topPayBusPnlLayout);
+        topPayBusPnlLayout.setHorizontalGroup(
+            topPayBusPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(topPayBusLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        topPayBusPnlLayout.setVerticalGroup(
+            topPayBusPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(topPayBusLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
+        btnUpdateDriver3.add(topPayBusPnl);
+
+        paymentCard.setBackground(new java.awt.Color(255, 255, 255));
+        paymentCard.setLayout(new java.awt.CardLayout());
+
+        payBus.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel77.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel77.setText("Pay Bus");
+
+        jTable8.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Serial No", "Bus Number", "Month", "Year", "Amount"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(jTable8);
+        if (jTable8.getColumnModel().getColumnCount() > 0) {
+            jTable8.getColumnModel().getColumn(0).setResizable(false);
+            jTable8.getColumnModel().getColumn(1).setResizable(false);
+            jTable8.getColumnModel().getColumn(2).setResizable(false);
+            jTable8.getColumnModel().getColumn(3).setResizable(false);
+            jTable8.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel20.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel78.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel78.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel78.setText("Bus Number");
+
+        jLabel79.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel79.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel79.setText("Select Month");
+
+        jLabel80.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel80.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel80.setText("Enter Year");
+
+        jLabel81.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel81.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel81.setText("Payable Amount");
+
+        jButton13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton13.setText("ADD");
+
+        jTextField29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        jComboBox16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jTextField31.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout payBusLayout = new javax.swing.GroupLayout(payBus);
+        payBus.setLayout(payBusLayout);
+        payBusLayout.setHorizontalGroup(
+            payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payBusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(payBusLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(payBusLayout.createSequentialGroup()
+                        .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel79, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel80, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(103, 103, 103)
+                        .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField29, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox16, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
+                            .addComponent(jTextField31, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField33, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payBusLayout.createSequentialGroup()
+                        .addComponent(jLabel77)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(payBusLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        payBusLayout.setVerticalGroup(
+            payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payBusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel79)
+                    .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel80)
+                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        paymentCard.add(payBus, "card2");
+
+        payDriver.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel67.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel67.setText("Pay Driver");
+
+        jTable6.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Serial No", "Driver ID", "Driver Name", "Month", "Year", "Amount"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(0).setResizable(false);
+            jTable6.getColumnModel().getColumn(1).setResizable(false);
+            jTable6.getColumnModel().getColumn(2).setResizable(false);
+            jTable6.getColumnModel().getColumn(2).setHeaderValue("Driver Name");
+            jTable6.getColumnModel().getColumn(3).setResizable(false);
+            jTable6.getColumnModel().getColumn(4).setResizable(false);
+            jTable6.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jPanel18.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel68.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel68.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel68.setText("Driver Employee ID");
+
+        jLabel69.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel69.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel69.setText("Select Month");
+
+        jLabel70.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel70.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel70.setText("Enter Year");
+
+        jLabel71.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel71.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel71.setText("Payable Amount");
+
+        jButton11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton11.setText("ADD");
+
+        jTextField12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        jComboBox15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jTextField18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout payDriverLayout = new javax.swing.GroupLayout(payDriver);
+        payDriver.setLayout(payDriverLayout);
+        payDriverLayout.setHorizontalGroup(
+            payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payDriverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(payDriverLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(payDriverLayout.createSequentialGroup()
+                        .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel69, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(103, 103, 103)
+                        .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox15, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
+                            .addComponent(jTextField18, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField22, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payDriverLayout.createSequentialGroup()
+                        .addComponent(jLabel67)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(payDriverLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        payDriverLayout.setVerticalGroup(
+            payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payDriverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel69)
+                    .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70)
+                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        paymentCard.add(payDriver, "card2");
+
+        javax.swing.GroupLayout paymentLayout = new javax.swing.GroupLayout(payment);
+        payment.setLayout(paymentLayout);
+        paymentLayout.setHorizontalGroup(
+            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(paymentCard, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnUpdateDriver3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        paymentLayout.setVerticalGroup(
+            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentLayout.createSequentialGroup()
+                .addComponent(btnUpdateDriver3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paymentCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        middlePanel.add(payment, "card2");
 
         addBus.setBackground(new java.awt.Color(248, 248, 248));
 
@@ -1749,7 +2116,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         topAddBusBtnPnl.setLayout(topAddBusBtnPnlLayout);
         topAddBusBtnPnlLayout.setHorizontalGroup(
             topAddBusBtnPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topAddBusBtnLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(topAddBusBtnLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         topAddBusBtnPnlLayout.setVerticalGroup(
             topAddBusBtnPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1779,7 +2146,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         topUpdateBusBtnPnl.setLayout(topUpdateBusBtnPnlLayout);
         topUpdateBusBtnPnlLayout.setHorizontalGroup(
             topUpdateBusBtnPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topUpdateBusBtnLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(topUpdateBusBtnLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         topUpdateBusBtnPnlLayout.setVerticalGroup(
             topUpdateBusBtnPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1791,9 +2158,9 @@ public class DashboardScreen extends javax.swing.JFrame {
         btnUpdateDriver1Layout.setHorizontalGroup(
             btnUpdateDriver1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnUpdateDriver1Layout.createSequentialGroup()
-                .addComponent(topAddBusBtnPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(topAddBusBtnPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(topUpdateBusBtnPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(topUpdateBusBtnPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnUpdateDriver1Layout.setVerticalGroup(
             btnUpdateDriver1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2186,371 +2553,6 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         middlePanel.add(addBus, "card2");
 
-        payment.setBackground(new java.awt.Color(248, 248, 248));
-
-        btnUpdateDriver3.setBackground(new java.awt.Color(248, 248, 248));
-        btnUpdateDriver3.setLayout(new java.awt.GridLayout(1, 0));
-
-        topPayDriverPnl.setBackground(new java.awt.Color(60, 188, 225));
-
-        topPayDriverLbl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        topPayDriverLbl.setForeground(new java.awt.Color(255, 255, 255));
-        topPayDriverLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        topPayDriverLbl.setText("Pay Driver");
-        topPayDriverLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPayDriverLbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                topPayDriverLblMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                topPayDriverLblMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                topPayDriverLblMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout topPayDriverPnlLayout = new javax.swing.GroupLayout(topPayDriverPnl);
-        topPayDriverPnl.setLayout(topPayDriverPnlLayout);
-        topPayDriverPnlLayout.setHorizontalGroup(
-            topPayDriverPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPayDriverLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-        );
-        topPayDriverPnlLayout.setVerticalGroup(
-            topPayDriverPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPayDriverLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
-
-        btnUpdateDriver3.add(topPayDriverPnl);
-
-        topPayBusPnl.setBackground(new java.awt.Color(250, 199, 90));
-
-        topPayBusLbl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        topPayBusLbl.setForeground(new java.awt.Color(255, 255, 255));
-        topPayBusLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        topPayBusLbl.setText("Pay Bus");
-        topPayBusLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPayBusLbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                topPayBusLblMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                topPayBusLblMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                topPayBusLblMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout topPayBusPnlLayout = new javax.swing.GroupLayout(topPayBusPnl);
-        topPayBusPnl.setLayout(topPayBusPnlLayout);
-        topPayBusPnlLayout.setHorizontalGroup(
-            topPayBusPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPayBusLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-        );
-        topPayBusPnlLayout.setVerticalGroup(
-            topPayBusPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPayBusLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
-
-        btnUpdateDriver3.add(topPayBusPnl);
-
-        paymentCard.setBackground(new java.awt.Color(255, 255, 255));
-        paymentCard.setLayout(new java.awt.CardLayout());
-
-        payBus.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel77.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel77.setText("Pay Bus");
-
-        jTable8.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        jTable8.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Serial No", "Bus Number", "Month", "Year", "Amount"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane8.setViewportView(jTable8);
-        if (jTable8.getColumnModel().getColumnCount() > 0) {
-            jTable8.getColumnModel().getColumn(0).setResizable(false);
-            jTable8.getColumnModel().getColumn(1).setResizable(false);
-            jTable8.getColumnModel().getColumn(2).setResizable(false);
-            jTable8.getColumnModel().getColumn(3).setResizable(false);
-            jTable8.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        jPanel20.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel78.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel78.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel78.setText("Bus Number");
-
-        jLabel79.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel79.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel79.setText("Select Month");
-
-        jLabel80.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel80.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel80.setText("Enter Year");
-
-        jLabel81.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel81.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel81.setText("Payable Amount");
-
-        jButton13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton13.setText("ADD");
-
-        jTextField29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
-        jComboBox16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jTextField31.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jTextField33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout payBusLayout = new javax.swing.GroupLayout(payBus);
-        payBus.setLayout(payBusLayout);
-        payBusLayout.setHorizontalGroup(
-            payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payBusLayout.createSequentialGroup()
-                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payBusLayout.createSequentialGroup()
-                        .addContainerGap(118, Short.MAX_VALUE)
-                        .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payBusLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payBusLayout.createSequentialGroup()
-                                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel79, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel80, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(103, 103, 103)
-                                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField29, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox16, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField31, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField33, javax.swing.GroupLayout.Alignment.LEADING)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payBusLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel77)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(payBusLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
-        );
-        payBusLayout.setVerticalGroup(
-            payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payBusLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel79)
-                    .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel80)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        paymentCard.add(payBus, "card2");
-
-        payDriver.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel67.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel67.setText("Pay Driver");
-
-        jTable6.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Serial No", "Driver ID", "Driver Name", "Month", "Year", "Amount"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(jTable6);
-        if (jTable6.getColumnModel().getColumnCount() > 0) {
-            jTable6.getColumnModel().getColumn(0).setResizable(false);
-            jTable6.getColumnModel().getColumn(1).setResizable(false);
-            jTable6.getColumnModel().getColumn(2).setResizable(false);
-            jTable6.getColumnModel().getColumn(2).setHeaderValue("Driver Name");
-            jTable6.getColumnModel().getColumn(3).setResizable(false);
-            jTable6.getColumnModel().getColumn(4).setResizable(false);
-            jTable6.getColumnModel().getColumn(5).setResizable(false);
-        }
-
-        jPanel18.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel68.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel68.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel68.setText("Driver Employee ID");
-
-        jLabel69.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel69.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel69.setText("Select Month");
-
-        jLabel70.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel70.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel70.setText("Enter Year");
-
-        jLabel71.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel71.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel71.setText("Payable Amount");
-
-        jButton11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton11.setText("ADD");
-
-        jTextField12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
-        jComboBox15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jTextField18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jTextField22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout payDriverLayout = new javax.swing.GroupLayout(payDriver);
-        payDriver.setLayout(payDriverLayout);
-        payDriverLayout.setHorizontalGroup(
-            payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payDriverLayout.createSequentialGroup()
-                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payDriverLayout.createSequentialGroup()
-                        .addContainerGap(118, Short.MAX_VALUE)
-                        .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payDriverLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payDriverLayout.createSequentialGroup()
-                                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel69, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(103, 103, 103)
-                                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox15, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField18, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField22, javax.swing.GroupLayout.Alignment.LEADING)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payDriverLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel67)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(payDriverLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
-        );
-        payDriverLayout.setVerticalGroup(
-            payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payDriverLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel69)
-                    .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel70)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(payDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        paymentCard.add(payDriver, "card2");
-
-        javax.swing.GroupLayout paymentLayout = new javax.swing.GroupLayout(payment);
-        payment.setLayout(paymentLayout);
-        paymentLayout.setHorizontalGroup(
-            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paymentCard, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(btnUpdateDriver3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        paymentLayout.setVerticalGroup(
-            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentLayout.createSequentialGroup()
-                .addComponent(btnUpdateDriver3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paymentCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        middlePanel.add(payment, "card2");
-
         driverDetails.setBackground(new java.awt.Color(248, 248, 248));
 
         btnUpdateDriver.setBackground(new java.awt.Color(248, 248, 248));
@@ -2801,7 +2803,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel54.setText("Contact Number");
 
         jLabel55.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel55.setText("Employee ID");
+        jLabel55.setText("Driver ID");
 
         jLabel56.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel56.setText("Date of Joining (DD-MM-YYYY)");
@@ -2857,26 +2859,34 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         jTextField27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_driver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Employee ID", "Driver Name"
+                "Driver ID", "Driver Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tbl_driver);
+        if (tbl_driver.getColumnModel().getColumnCount() > 0) {
+            tbl_driver.getColumnModel().getColumn(0).setResizable(false);
+            tbl_driver.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
@@ -2893,6 +2903,18 @@ public class DashboardScreen extends javax.swing.JFrame {
             }
         });
 
+        jButton16.setText("Refresh");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout updateDriverPaneLayout = new javax.swing.GroupLayout(updateDriverPane);
         updateDriverPane.setLayout(updateDriverPaneLayout);
         updateDriverPaneLayout.setHorizontalGroup(
@@ -2903,43 +2925,46 @@ public class DashboardScreen extends javax.swing.JFrame {
                     .addGroup(updateDriverPaneLayout.createSequentialGroup()
                         .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
+                    .addGroup(updateDriverPaneLayout.createSequentialGroup()
                         .addGap(0, 48, Short.MAX_VALUE)
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(updateDriverPaneLayout.createSequentialGroup()
-                                .addComponent(jButton18)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(updateDriverPaneLayout.createSequentialGroup()
-                                .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                    .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                    .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(28, 28, 28)
-                                .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(jTextField27)
-                                    .addComponent(jTextField26)
-                                    .addComponent(jTextField25)
-                                    .addComponent(jTextField24)
-                                    .addComponent(jTextField23)
-                                    .addComponent(jTextField36)
-                                    .addComponent(jTextField34)
-                                    .addComponent(jTextField32)
-                                    .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
-                                        .addComponent(jTextField30)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton15)))))
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(updateDriverPaneLayout.createSequentialGroup()
+                                        .addComponent(jButton18)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(updateDriverPaneLayout.createSequentialGroup()
+                                        .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                            .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                            .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                            .addComponent(jTextField27)
+                                            .addComponent(jTextField26)
+                                            .addComponent(jTextField25)
+                                            .addComponent(jTextField24)
+                                            .addComponent(jTextField23)
+                                            .addComponent(jTextField36)
+                                            .addComponent(jTextField34)
+                                            .addComponent(jTextField32)
+                                            .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
+                                                .addComponent(jTextField30)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton15)))))
+                                .addGap(42, 42, 42)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(25, Short.MAX_VALUE))))
         );
         updateDriverPaneLayout.setVerticalGroup(
@@ -2997,7 +3022,9 @@ public class DashboardScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton16)
+                .addGap(3, 3, 3)
                 .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jButton18))
@@ -3080,7 +3107,7 @@ public class DashboardScreen extends javax.swing.JFrame {
 
     private void sideDashboardPnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sideDashboardPnlMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_sideDashboardPnlMouseClicked
 
     private void sideBusPnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sideBusPnlMouseClicked
@@ -3092,7 +3119,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(payment);
         middlePanel.repaint();
         middlePanel.revalidate();
@@ -3103,7 +3130,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(busScheduling);
         middlePanel.repaint();
         middlePanel.revalidate();
@@ -3114,11 +3141,11 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(dashBoard);
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
     }//GEN-LAST:event_sideDashboardLblMouseClicked
 
     private void sideDriverLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sideDriverLblMouseClicked
@@ -3126,7 +3153,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(driverDetails);
         middlePanel.repaint();
         middlePanel.revalidate();
@@ -3137,7 +3164,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(addBus);
         middlePanel.repaint();
         middlePanel.revalidate();
@@ -3148,7 +3175,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         middlePanel.removeAll();
         middlePanel.repaint();
         middlePanel.revalidate();
-        
+
         middlePanel.add(invoice);
         middlePanel.repaint();
         middlePanel.revalidate();
@@ -3249,7 +3276,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         driverDetailsCard.removeAll();
         driverDetailsCard.repaint();
         driverDetailsCard.revalidate();
-        
+
         driverDetailsCard.add(addDriverPane);
         driverDetailsCard.repaint();
         driverDetailsCard.revalidate();
@@ -3260,7 +3287,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         driverDetailsCard.removeAll();
         driverDetailsCard.repaint();
         driverDetailsCard.revalidate();
-        
+
         driverDetailsCard.add(updateDriverPane);
         driverDetailsCard.repaint();
         driverDetailsCard.revalidate();
@@ -3271,7 +3298,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         busDetailsCard.removeAll();
         busDetailsCard.repaint();
         busDetailsCard.revalidate();
-        
+
         busDetailsCard.add(addBusDetails);
         busDetailsCard.repaint();
         busDetailsCard.revalidate();
@@ -3282,7 +3309,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         busDetailsCard.removeAll();
         busDetailsCard.repaint();
         busDetailsCard.revalidate();
-        
+
         busDetailsCard.add(updateBusDetails);
         busDetailsCard.repaint();
         busDetailsCard.revalidate();
@@ -3313,7 +3340,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         busScheduleCard.removeAll();
         busScheduleCard.repaint();
         busScheduleCard.revalidate();
-        
+
         busScheduleCard.add(addSchedulePane);
         busScheduleCard.repaint();
         busScheduleCard.revalidate();
@@ -3324,7 +3351,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         busScheduleCard.removeAll();
         busScheduleCard.repaint();
         busScheduleCard.revalidate();
-        
+
         busScheduleCard.add(addRoutePane);
         busScheduleCard.repaint();
         busScheduleCard.revalidate();
@@ -3355,7 +3382,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         paymentCard.removeAll();
         paymentCard.repaint();
         paymentCard.revalidate();
-        
+
         paymentCard.add(payDriver);
         paymentCard.repaint();
         paymentCard.revalidate();
@@ -3366,7 +3393,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         paymentCard.removeAll();
         paymentCard.repaint();
         paymentCard.revalidate();
-        
+
         paymentCard.add(payBus);
         paymentCard.repaint();
         paymentCard.revalidate();
@@ -3377,7 +3404,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         invoiceCard.removeAll();
         invoiceCard.repaint();
         invoiceCard.revalidate();
-        
+
         invoiceCard.add(driverInvoice);
         invoiceCard.repaint();
         invoiceCard.revalidate();
@@ -3388,7 +3415,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         invoiceCard.removeAll();
         invoiceCard.repaint();
         invoiceCard.revalidate();
-        
+
         invoiceCard.add(busInvoice);
         invoiceCard.repaint();
         invoiceCard.revalidate();
@@ -3447,6 +3474,30 @@ public class DashboardScreen extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        // TODO add your handling code here:
+        try {
+            ServerConnect con = new ServerConnect();
+            ResultSet rs = con.s.executeQuery("select * from driver");
+            
+            while (rs.next()) {
+                String driver_id = String.valueOf(rs.getString("driver_id"));
+                String driver_name = String.valueOf(rs.getString("driver_name"));
+
+                Object[] obj = {driver_id, driver_name};
+                model = (DefaultTableModel) tbl_driver.getModel();
+                model.addRow(obj);
+                
+            }
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton16MouseClicked
 
     /**
      * @param args the command line arguments
@@ -3517,6 +3568,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -3653,7 +3705,6 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
@@ -3711,6 +3762,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JPanel sidePaymentPnl;
     private javax.swing.JLabel sideScheduleLbl;
     private javax.swing.JPanel sideSchedulePnl;
+    private javax.swing.JTable tbl_driver;
     private javax.swing.JCheckBox tickDriverMedicalIssue;
     private javax.swing.JLabel topAddBusBtnLbl;
     private javax.swing.JPanel topAddBusBtnPnl;

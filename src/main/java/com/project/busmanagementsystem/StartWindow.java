@@ -146,7 +146,7 @@ public class StartWindow extends javax.swing.JFrame {
            
            try {
             for(int i =0; i<=100; i++){
-                Thread.sleep(50);
+                Thread.sleep(20);
                 startWindow.progressPercentage.setText(i+"%");
                 startWindow.progressBar.setValue(i);
                 

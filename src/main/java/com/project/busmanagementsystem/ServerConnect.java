@@ -18,6 +18,7 @@ public class ServerConnect {
     
     Connection c;
     Statement s;
+    PreparedStatement pst;
     
     public ServerConnect(){
         try {
