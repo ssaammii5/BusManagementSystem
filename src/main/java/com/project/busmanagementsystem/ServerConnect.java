@@ -18,13 +18,14 @@ public class ServerConnect {
     
     Connection c;
     Statement s;
-    PreparedStatement pst;
     
     public ServerConnect(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost/busmanagement_db","root","");
             s = c.createStatement();
+            
+            
         } catch (Exception e) {
             System.out.println(e);
         }

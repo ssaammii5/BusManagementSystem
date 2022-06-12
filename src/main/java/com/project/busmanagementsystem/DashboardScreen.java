@@ -7,9 +7,14 @@ package com.project.busmanagementsystem;
 
 import java.awt.Color;
 import java.sql.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.table.*;
 
 /**
  *
@@ -25,7 +30,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     public DashboardScreen() {
         super("Bus Management System");
         initComponents();
-        
+
     }
 
     /**
@@ -33,13 +38,13 @@ public class DashboardScreen extends javax.swing.JFrame {
      * Management System | | Unique Developer|
      *
      */
-    private void driver_tbl_reset(){
+    private void driver_tbl_reset() {
         model = (DefaultTableModel) tbl_driver.getModel();
         model.setRowCount(0);
     }
-    
-    private void driverTableColumnHide(){
-        
+
+    private void driverTableColumnHide() {
+
         TableColumnManager tcm = new TableColumnManager(tbl_driver);
         tcm.hideColumn(2);
         tcm.hideColumn(3);
@@ -49,7 +54,72 @@ public class DashboardScreen extends javax.swing.JFrame {
         tcm.hideColumn(7);
         tcm.hideColumn(8);
         tcm.hideColumn(9);
-        tcm.hideColumn(10);  
+        tcm.hideColumn(10);
+    }
+
+    //Unused
+    public void search_driverTable(String str) {
+        model = (DefaultTableModel) tbl_driver.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbl_driver.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str, 0));
+    }
+
+    public void addDriverFunc(String name, String address, String contact, String dob, String doj, String license, String licenseIssue, String licenseExp, int assignBus, String medical) {
+        try {
+            ServerConnect con = new ServerConnect();
+            PreparedStatement pst = con.c.prepareStatement("INSERT INTO driver(driver_name, address, contact_num, dob, date_of_joining, license_num, license_issue, license_exp, assign_bus, medical_issue) VALUES(?,?,?,?,?,?,?,?,?,?)");
+            pst.setString(1, name);
+            pst.setString(2, address);
+            pst.setString(3, contact);
+            pst.setString(4, dob);
+            pst.setString(5, doj);
+            pst.setString(6, license);
+            pst.setString(7, licenseIssue);
+            pst.setString(8, licenseExp);
+            pst.setInt(9, assignBus);
+            pst.setString(10, medical);
+            
+            int rowCnt = pst.executeUpdate();
+            if(rowCnt==1){
+                JOptionPane.showMessageDialog(this, "Added Successfully!");
+            } else{
+                JOptionPane.showMessageDialog(this, "Insertion Failed!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Insertion Failed!");
+        }
+    }
+    
+    
+    public void updateDriverFunc(int id, String name, String address, String contact, String dob, String doj, String license, String licenseIssue, String licenseExp, int assignBus, String medical) {
+        try {
+            ServerConnect con = new ServerConnect();
+            PreparedStatement pst = con.c.prepareStatement("UPDATE driver SET driver_name=?,address=?,contact_num=?,dob=?,date_of_joining=?,license_num=?,license_issue=?,license_exp=?,assign_bus=?,medical_issue=? where driver_id=?");
+            
+            pst.setString(1, name);
+            pst.setString(2, address);
+            pst.setString(3, contact);
+            pst.setString(4, dob);
+            pst.setString(5, doj);
+            pst.setString(6, license);
+            pst.setString(7, licenseIssue);
+            pst.setString(8, licenseExp);
+            pst.setInt(9, assignBus);
+            pst.setString(10, medical);
+            pst.setInt(11, id);
+            
+            int rowCnt = pst.executeUpdate();
+            if(rowCnt==1){
+                JOptionPane.showMessageDialog(this, "Updated Successfully!");
+            } else{
+                JOptionPane.showMessageDialog(this, "Update Failed!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Update Failed!");
+        }
     }
 
     /**
@@ -287,7 +357,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         txtDriverName = new javax.swing.JTextField();
         tickDriverMedicalIssue = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        addDriverBtn = new javax.swing.JButton();
         dropDriverAssignBusNo = new javax.swing.JComboBox<>();
         updateDriverPane = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
@@ -306,7 +376,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         txt_u_medicalIssue = new javax.swing.JCheckBox();
         jLabel62 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        driverUpdateBtn = new javax.swing.JButton();
         txt_u_dob = new javax.swing.JTextField();
         txt_u_doj = new javax.swing.JTextField();
         txt_u_license = new javax.swing.JTextField();
@@ -315,7 +385,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_driver = new javax.swing.JTable();
         txt_u_assignBus = new javax.swing.JComboBox<>();
-        jButton15 = new javax.swing.JButton();
+        updateDriverSearchBtn = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
 
@@ -2702,13 +2772,18 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setText("Assign Number of Bus");
 
-        jButton1.setBackground(new java.awt.Color(36, 202, 120));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addDriverBtn.setBackground(new java.awt.Color(36, 202, 120));
+        addDriverBtn.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        addDriverBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addDriverBtn.setText("ADD");
+        addDriverBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addDriverBtnMouseClicked(evt);
+            }
+        });
+        addDriverBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addDriverBtnActionPerformed(evt);
             }
         });
 
@@ -2754,7 +2829,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tickDriverMedicalIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(txtDriverAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addDriverBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDriverName))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
@@ -2802,7 +2877,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                     .addComponent(dropDriverAssignBusNo)
                     .addComponent(tickDriverMedicalIssue, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(412, Short.MAX_VALUE))
         );
 
@@ -2856,13 +2931,18 @@ public class DashboardScreen extends javax.swing.JFrame {
         jLabel62.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel62.setText("Assign Number of Bus");
 
-        jButton7.setBackground(new java.awt.Color(36, 202, 120));
-        jButton7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("UPDATE");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        driverUpdateBtn.setBackground(new java.awt.Color(36, 202, 120));
+        driverUpdateBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        driverUpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        driverUpdateBtn.setText("UPDATE");
+        driverUpdateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                driverUpdateBtnMouseClicked(evt);
+            }
+        });
+        driverUpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                driverUpdateBtnActionPerformed(evt);
             }
         });
 
@@ -2921,8 +3001,13 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         txt_u_assignBus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
-        jButton15.setBackground(new java.awt.Color(36, 202, 120));
-        jButton15.setText("Search");
+        updateDriverSearchBtn.setBackground(new java.awt.Color(36, 202, 120));
+        updateDriverSearchBtn.setText("Search");
+        updateDriverSearchBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateDriverSearchBtnMouseClicked(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(255, 102, 102));
         jButton18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -2965,7 +3050,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                                     .addGroup(updateDriverPaneLayout.createSequentialGroup()
                                         .addComponent(jButton18)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(driverUpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(updateDriverPaneLayout.createSequentialGroup()
                                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
@@ -2993,7 +3078,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateDriverPaneLayout.createSequentialGroup()
                                                 .addComponent(txt_u_driverId)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton15)))))
+                                                .addComponent(updateDriverSearchBtn)))))
                                 .addGap(42, 42, 42)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(25, Short.MAX_VALUE))))
@@ -3007,7 +3092,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateDriverPaneLayout.createSequentialGroup()
                         .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDriverSearchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_u_driverId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3057,7 +3142,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addComponent(jButton16)
                 .addGap(3, 3, 3)
                 .addGroup(updateDriverPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
+                    .addComponent(driverUpdateBtn)
                     .addComponent(jButton18))
                 .addGap(480, 480, 480))
         );
@@ -3120,13 +3205,13 @@ public class DashboardScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDriverAddressActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDriverBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addDriverBtnActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void driverUpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverUpdateBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_driverUpdateBtnActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -3516,7 +3601,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         try {
             ServerConnect con = new ServerConnect();
             ResultSet rs = con.s.executeQuery("select * from driver");
-            
+
             driver_tbl_reset();
             while (rs.next()) {
                 String driver_id = String.valueOf(rs.getString("driver_id"));
@@ -3531,10 +3616,10 @@ public class DashboardScreen extends javax.swing.JFrame {
                 String assign_bus = String.valueOf(rs.getString("assign_bus"));
                 String medical_issue = String.valueOf(rs.getString("medical_issue"));
 
-                Object[] obj = {driver_id, driver_name,address,contact_num,dob,date_of_joining,license_num,license_issue,license_exp,assign_bus,medical_issue};
+                Object[] obj = {driver_id, driver_name, address, contact_num, dob, date_of_joining, license_num, license_issue, license_exp, assign_bus, medical_issue};
                 model = (DefaultTableModel) tbl_driver.getModel();
                 model.addRow(obj);
-                
+
             }
 
         } catch (Exception e) {
@@ -3545,10 +3630,10 @@ public class DashboardScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         int rowNo = tbl_driver.getSelectedRow();
         TableModel model = tbl_driver.getModel();
-        
+
         txt_u_driverId.setText(model.getValueAt(rowNo, 0).toString());
         txt_u_driverName.setText(model.getValueAt(rowNo, 1).toString());
-        
+
         txt_u_address.setText(tbl_driver.getModel().getValueAt(rowNo, 2).toString());
         txt_u_contact.setText(tbl_driver.getModel().getValueAt(rowNo, 3).toString());
         txt_u_dob.setText(tbl_driver.getModel().getValueAt(rowNo, 4).toString());
@@ -3556,9 +3641,82 @@ public class DashboardScreen extends javax.swing.JFrame {
         txt_u_license.setText(tbl_driver.getModel().getValueAt(rowNo, 6).toString());
         txt_u_licenseIssue.setText(tbl_driver.getModel().getValueAt(rowNo, 7).toString());
         txt_u_licenseExp.setText(tbl_driver.getModel().getValueAt(rowNo, 8).toString());
-        
-        
+        txt_u_assignBus.setSelectedItem(tbl_driver.getModel().getValueAt(rowNo, 9).toString());
+        txt_u_medicalIssue.setSelected(Boolean.parseBoolean(tbl_driver.getModel().getValueAt(rowNo, 10).toString()));
+
+
     }//GEN-LAST:event_tbl_driverMouseClicked
+
+    private void updateDriverSearchBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateDriverSearchBtnMouseClicked
+        // TODO add your handling code here:
+        try {
+            String searchText = txt_u_driverId.getText();
+            //search_driverTable(searchText);
+
+            TableModel model = tbl_driver.getModel();
+
+            txt_u_driverName.setText(model.getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 1).toString());
+            txt_u_address.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 2).toString());
+            txt_u_contact.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 3).toString());
+            txt_u_dob.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 4).toString());
+            txt_u_doj.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 5).toString());
+            txt_u_license.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 6).toString());
+            txt_u_licenseIssue.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 7).toString());
+            txt_u_licenseExp.setText(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 8).toString());
+            txt_u_assignBus.setSelectedItem(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 9).toString());
+            txt_u_medicalIssue.setSelected(Boolean.parseBoolean(tbl_driver.getModel().getValueAt(Integer.parseInt(txt_u_driverId.getText()) - 1, 10).toString()));
+        } catch (Exception e) {
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, "Sorry! Not Found.");
+        }
+
+    }//GEN-LAST:event_updateDriverSearchBtnMouseClicked
+
+    private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
+        // TODO add your handling code here:
+        String name = txtDriverName.getText();
+        String address = txtDriverAddress.getText();
+        String contact = txtDriverContactNo.getText();
+        String dob = txtDriverDob.getText();
+        String doj = txtDriverJoinDate.getText();
+        String license = txtDriverLicenseNum.getText();
+        String licenseIssue = txtDriverLicenseIssue.getText();
+        String licenseExp = txtDriverLicenseExp.getText();
+        int assignBus = dropDriverAssignBusNo.getSelectedIndex() + 1;
+        String checkMedical = String.valueOf(tickDriverMedicalIssue.isSelected());
+
+        addDriverFunc(name, address, contact, dob, doj, license, licenseIssue, licenseExp, assignBus, checkMedical);
+
+        txtDriverName.setText("");
+        txtDriverAddress.setText("");
+        txtDriverContactNo.setText("");
+        txtDriverDob.setText("");
+        txtDriverJoinDate.setText("");
+        txtDriverLicenseNum.setText("");
+        txtDriverLicenseIssue.setText("");
+        txtDriverLicenseExp.setText("");
+        dropDriverAssignBusNo.setSelectedIndex(0);
+        tickDriverMedicalIssue.setSelected(false);
+    }//GEN-LAST:event_addDriverBtnMouseClicked
+
+    private void driverUpdateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_driverUpdateBtnMouseClicked
+        // TODO add your handling code here:
+        int id = Integer.parseInt(txt_u_driverId.getText());
+        String name = txt_u_driverName.getText();
+        String address = txt_u_address.getText();
+        String contact = txt_u_contact.getText();
+        String dob = txt_u_dob.getText();
+        String doj = txt_u_doj.getText();
+        String license = txt_u_license.getText();
+        String licenseIssue = txt_u_licenseIssue.getText();
+        String licenseExp = txt_u_licenseExp.getText();
+        int assignBus = txt_u_assignBus.getSelectedIndex()+1;
+        String checkMedical = String.valueOf(txt_u_medicalIssue.isSelected());
+        
+        
+        updateDriverFunc(id,name, address, contact, dob, doj, license, licenseIssue, licenseExp, assignBus, checkMedical);
+        
+    }//GEN-LAST:event_driverUpdateBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3602,6 +3760,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JPanel addBusRoutePnl;
     private javax.swing.JLabel addBusSchLbl;
     private javax.swing.JPanel addBusSchPnl;
+    private javax.swing.JButton addDriverBtn;
     private javax.swing.JPanel addDriverPane;
     private javax.swing.JPanel addRoutePane;
     private javax.swing.JPanel addSchedulePane;
@@ -3619,16 +3778,15 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JPanel driverDetailsCard;
     private javax.swing.JPanel driverDetailsCard5;
     private javax.swing.JPanel driverInvoice;
+    private javax.swing.JButton driverUpdateBtn;
     private javax.swing.JComboBox<String> dropDriverAssignBusNo;
     private javax.swing.JPanel invoice;
     private javax.swing.JPanel invoiceCard;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
@@ -3636,7 +3794,6 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox2;
@@ -3852,6 +4009,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JCheckBox txt_u_medicalIssue;
     private javax.swing.JPanel updateBusDetails;
     private javax.swing.JPanel updateDriverPane;
+    private javax.swing.JButton updateDriverSearchBtn;
     private javax.swing.JPanel wholePanel;
     // End of variables declaration//GEN-END:variables
 }
